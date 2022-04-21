@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+const singleSubMenuSize = 25;
+
 const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
@@ -8,10 +10,11 @@ const StyledHeader = styled.header`
   border-bottom: 1px solid #1b1b1b;
   padding: 30px 80px;
 
-  ${({ isOpen }) =>
+  ${({ isOpen, subMenuSize }) =>
     isOpen &&
+    subMenuSize &&
     css`
-      padding: 30px 80px 300px;
+      padding: 30px 80px ${80 + subMenuSize * singleSubMenuSize}px;
     `}
 `;
 

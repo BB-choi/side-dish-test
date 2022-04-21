@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import { MenuDatas } from "../../../MockData/MockData";
 import SubMenuUl from "./Menu.Styled";
 
+let maxSubMenuSize = 0;
+
 const SubMenu = ({ subMenuDatas }) => {
+  maxSubMenuSize =
+    subMenuDatas.length > maxSubMenuSize ? subMenuDatas.length : maxSubMenuSize;
+
   const subMenuList = subMenuDatas.map((subMenuData) => (
     <li key={subMenuData.id}>{subMenuData.name}</li>
   ));
@@ -10,9 +16,17 @@ const SubMenu = ({ subMenuDatas }) => {
   return <SubMenuUl>{subMenuList}</SubMenuUl>;
 };
 
-const Menu = ({ state: { handleMouseEvent, checkIsOpen } }) => {
-  const subMenuContents = (subMenu) => {
-    return checkIsOpen() ? <SubMenu subMenuDatas={subMenu} /> : null;
+const Menu = ({
+  state: { handleMouseEvent, checkIsOpen, handleSubMenuSize },
+}) => {
+  useEffect(() => {
+    handleSubMenuSize(maxSubMenuSize);
+  }, [maxSubMenuSize]);
+
+  const subMenuContents = ({ subMenu }) => {
+    return checkIsOpen() ? (
+      <SubMenu subMenuDatas={subMenu} handleSubMenuSize={handleSubMenuSize} />
+    ) : null;
   };
 
   return MenuDatas.map(({ id, name, subMenu }) => (
@@ -22,7 +36,7 @@ const Menu = ({ state: { handleMouseEvent, checkIsOpen } }) => {
       onMouseLeave={handleMouseEvent}
     >
       {name}
-      {subMenuContents(subMenu)}
+      {subMenuContents({ subMenu, handleSubMenuSize })}
     </li>
   ));
 };

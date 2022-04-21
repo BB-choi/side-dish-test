@@ -2,11 +2,13 @@ import PropTypes from "prop-types";
 import Nav from "./Nav";
 import NavArea from "./HeaderLeft.styled";
 
-const HeaderLeft = ({ state: { handleMouseEvent, checkIsOpen } }) => {
+const HeaderLeft = ({
+  state: { handleMouseEvent, checkIsOpen, handleSubMenuSize },
+}) => {
   return (
     <NavArea>
       <h1>Ordering</h1>
-      <Nav state={{ handleMouseEvent, checkIsOpen }} />
+      <Nav state={{ handleMouseEvent, checkIsOpen, handleSubMenuSize }} />
     </NavArea>
   );
 };

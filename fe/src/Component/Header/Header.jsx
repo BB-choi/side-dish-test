@@ -5,6 +5,7 @@ import HeaderLeft from "./HeaderLeft/HeaderLeft";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [subMenuSize, setSubMenuSize] = useState(0);
 
   const checkIsOpen = () => {
     return isOpen;
@@ -14,9 +15,15 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleSubMenuSize = (count) => {
+    setSubMenuSize(count);
+  };
+
   return (
-    <StyledHeader isOpen={isOpen}>
-      <HeaderLeft state={{ handleMouseEvent, checkIsOpen }} />
+    <StyledHeader isOpen={isOpen} subMenuSize={subMenuSize}>
+      <HeaderLeft
+        state={{ handleMouseEvent, checkIsOpen, handleSubMenuSize }}
+      />
       <HeaderRight />
     </StyledHeader>
   );

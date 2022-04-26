@@ -133,4 +133,25 @@ const categoryMenus = {
   ],
 };
 
-export { MenuDatas, icons, event, categoryMenus };
+const menuData = {
+  menuCategories: [
+    {
+      menuCategoryName: "식탁을 풍성하게 하는 정갈한 밑반찬",
+      sideDishes: [
+        {
+          id: 1,
+          name: "오리 주물럭_반조리",
+          description: "감칠맛 나는 매콤한 양념",
+          dawnDeliveryFlag: true,
+          wholeNationDeliveryFlag: true,
+          price: 15800,
+          discountType: "런칭특가",
+          discountRate: 20,
+          saveFileName: "img/1_ma_1.png",
+        },
+      ],
+    },
+  ],
+};
+
+export { MenuDatas, icons, event, categoryMenus, menuData };

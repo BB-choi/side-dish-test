@@ -1,5 +1,6 @@
 const padding = {
   regular: "30px",
+  middle: "56px",
   large: "80px",
 };
 
